@@ -6,7 +6,7 @@
 
   - To install this plugin, right click the plover icon. go to tools -\>
     plugins manager, find the little button for "Install from Git repo"
-    on the right side of "Install/Update" and enter \`https://github.com/phuertay/plover_clippy_2\`,
+    on the right side of "Install/Update" and enter `https://github.com/phuertay/plover_clippy_2`,
     then click "OK".
   - When it finishes installing, restart Plover, go to configure -\>
     plugins, and check the box next to \`plover\_clippy\_2\` to activate
