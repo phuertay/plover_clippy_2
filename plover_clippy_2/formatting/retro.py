@@ -1,5 +1,6 @@
 from .color import Color
 from datetime import datetime
+from ..dictionary_source import dictionary_suffix
 
 
 class Retro(Color):
@@ -29,6 +30,8 @@ class Retro(Color):
         self.english = self.getEnglish(
                 clippy, clippy.state.phrase["english"])
         self.date = f'[{datetime.now().strftime("%F %T")}]'
+        self.dictionary = dictionary_suffix(
+                phrase.get("dictionary"))
 
     def format(self, obj, clippy):
         self.mode(obj, clippy)
@@ -41,6 +44,7 @@ class Retro(Color):
                 f'{self.date} {english} || '
                 f'{stroked} -> '
                 f'{suggestions}'
+                f'{self.dictionary}'
                 )
 
     def minimalSuggest(self, obj, clippy):
@@ -49,4 +53,5 @@ class Retro(Color):
         return clippy.actions.add(
                 f'{english} '
                 f'{suggestions}'
+                f'{self.dictionary}'
                 )

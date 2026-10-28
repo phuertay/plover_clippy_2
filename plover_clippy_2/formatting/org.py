@@ -1,5 +1,6 @@
 from .retro import Retro
 from .color import Color
+from ..dictionary_source import dictionary_suffix
 
 
 class Org(Color):
@@ -34,6 +35,7 @@ class Org(Color):
         self.efficiency_symbol = self.getEfficiencySymbol(
                 clippy, phrase["stroked"], phrase["suggestions"])
         self.source = f'# {phrase["source"]}'
+        self.dictionary = dictionary_suffix(phrase.get("dictionary"))
 
     def format(self, obj, clippy):
         self.mode(obj, clippy)
@@ -50,7 +52,8 @@ class Org(Color):
         self.output = (
                 f'{efficiency_symbol}'
                 f' {english} '
-                f'{suggestions} < {stroked}')
+                f'{suggestions} < {stroked}'
+                f'{self.dictionary}')
 
     def debugSuggest(self, obj, clippy):
         stroked = self.stroked
@@ -62,7 +65,8 @@ class Org(Color):
                 f'{efficiency_symbol}'
                 f' {english} '
                 f'{suggestions} < {stroked}  '
-                f'{source}')
+                f'{source}'
+                f'{self.dictionary}')
 
     def minimalSuggest(self, obj, clippy):
         suggestions = self.suggestions
@@ -72,4 +76,5 @@ class Org(Color):
                 f'{efficiency_symbol}'
                 f' {english} '
                 f'{suggestions}'
+                f'{self.dictionary}'
                 )

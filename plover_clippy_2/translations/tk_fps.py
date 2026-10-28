@@ -1,4 +1,5 @@
 from .retro import Retro
+from ..dictionary_source import dictionaries_for_phrase
 
 
 class Tkfps:
@@ -51,6 +52,9 @@ class Tkfps:
         stroked = self.getStroked(phrase)
         suggestions = self.retro.getSuggestions(clippy, english, stroked)
         if suggestions:
+            parts = list(getattr(self, "cache", ()) or ()) + list(phrase)
             yield {"english": english,
                    "stroked": stroked,
-                   "suggestions": suggestions}
+                   "suggestions": suggestions,
+                   "dictionary": dictionaries_for_phrase(
+                       clippy.engine, parts)}
