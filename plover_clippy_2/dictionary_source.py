@@ -33,8 +33,11 @@ def dictionary_name(dictionary):
     return os.path.basename(str(path).replace("\\", "/"))
 
 
-def dictionary_for_translation(engine, translation):
-    outline = outline_of(translation)
+def dictionary_for_outline(engine, outline):
+    if isinstance(outline, str):
+        outline = tuple(part for part in outline.split("/") if part)
+    else:
+        outline = tuple(outline)
     if not outline:
         return ""
     matches = _matches(engine, outline)
@@ -46,13 +49,31 @@ def dictionary_for_translation(engine, translation):
     return dictionary_name(dictionary)
 
 
+def dictionary_for_translation(engine, translation):
+    return dictionary_for_outline(engine, outline_of(translation))
+
+
+def _join_names(names):
+    joined = []
+    for name in names:
+        if name and (not joined or joined[-1] != name):
+            joined.append(name)
+    return ", ".join(joined)
+
+
 def dictionaries_for_phrase(engine, phrase):
-    names = []
-    for translation in phrase:
-        name = dictionary_for_translation(engine, translation)
-        if name and (not names or names[-1] != name):
-            names.append(name)
-    return ", ".join(names)
+    return _join_names(
+        dictionary_for_translation(engine, translation)
+        for translation in phrase
+    )
+
+
+def dictionaries_for_outlines(engine, outlines):
+    # The briefs on the left of "<". Add Translation shows these entries,
+    # not the dictionaries of the longer strokes that were written.
+    return _join_names(
+        dictionary_for_outline(engine, outline) for outline in outlines
+    )
 
 
 def dictionary_suffix(name):

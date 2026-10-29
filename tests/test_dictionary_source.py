@@ -5,6 +5,7 @@ import unittest
 from unittest.mock import patch
 
 from plover_clippy_2.dictionary_source import (
+    dictionaries_for_outlines,
     dictionaries_for_phrase,
     dictionary_for_translation,
     dictionary_suffix,
@@ -85,6 +86,26 @@ class DictionarySourceTest(unittest.TestCase):
         self.assertEqual(dictionaries_for_phrase(engine, phrase), "user.json, main.json")
         self.assertEqual(dictionary_suffix("user.json, main.json"), " (user.json, main.json)")
         self.assertEqual(dictionary_suffix(""), "")
+
+    def test_suggestion_uses_its_own_dictionary(self):
+        brief = ("PWEURBLGTSD",)
+        build = ("PWEULTD",)
+        it_comma = ("KW-BG",)
+        engine = Engine({
+            brief: [("build it,", Dictionary("josiah_afterburner.py", {}))],
+            build: [("build", Dictionary("josiah_us.json", {}))],
+            it_comma: [("it,", Dictionary("lapwing-base.json", {}))],
+        })
+        self.assertEqual(
+            dictionaries_for_outlines(engine, [brief]),
+            "josiah_afterburner.py",
+        )
+        self.assertEqual(
+            dictionaries_for_phrase(
+                engine, [Translation(build), Translation(it_comma)]
+            ),
+            "josiah_us.json, lapwing-base.json",
+        )
 
     def test_string_outline_and_collection_fallback(self):
         outline = ("KAT",)
