@@ -1,5 +1,5 @@
 from ..util import getOrgDate
-from plover_clippy_2.formatting.color import Color
+from plover_clippy_3.formatting.color import Color
 
 
 class Start(Color):

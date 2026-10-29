@@ -5,7 +5,7 @@
 <!-- end list -->
 
 ``` bash
-git clone https://github.com/Josiah-tan/plover_clippy_2 
+git clone https://github.com/phuertay/plover_clippy_3 
 ```
 
   - cd into this repo
@@ -20,7 +20,7 @@ git clone https://github.com/Josiah-tan/plover_clippy_2
 <!-- end list -->
 
 ``` bash
-cd plover_clippy_2
+cd plover_clippy_3
 plover -s plover_plugins install -e .
 ```
 
@@ -35,7 +35,7 @@ plover -s plover_plugins install -e .
 
 ``` python
 def initPost(obj, clippy):
-    clippy.state.output_file_name = "clippy_2.org"
+    clippy.state.output_file_name = "clippy_3.org"
     clippy.state.efficiency_symbol = "*"
     clippy.state.max_pad_efficiency = 5
     clippy.state.max_pad_english = 15
@@ -77,7 +77,7 @@ def initPost(obj, clippy):
         efficiency\_symbol, source, START, END, date
       - customizable values, with several options:
           - color (str): listed in
-            [gruvbox](plover_clippy_2/formatting/color/palletes/gruvbox.py)
+            [gruvbox](plover_clippy_3/formatting/color/palletes/gruvbox.py)
           - hex RGB codes (str): of form "\#XXXXXX", such that X
             represents any value from 1 - F
           - ANSI escape codes, learn to make your own
@@ -109,8 +109,8 @@ def initPost(obj, clippy):
 
   - Highly recommend checking out *sources* to see what you can do with
     it\!
-  - feel free to check out [Retro](plover_clippy_2/formatting/retro.py)
-    and [org](plover_clippy_2/formatting/org.py) for motivation, let us
+  - feel free to check out [Retro](plover_clippy_3/formatting/retro.py)
+    and [org](plover_clippy_3/formatting/org.py) for motivation, let us
     know on the plover discord if you need any help\!
 
 # Sources
@@ -211,13 +211,13 @@ def initPost(obj, clippy):
     
       - when writing your own sources, make sure to check back with the
         source code for reference (in this case
-        [Repeat](plover_clippy_2/distillations/repeat.py) and
-        [Strokes](plover_clippy_2/distillations/strokes.py)), because
+        [Repeat](plover_clippy_3/distillations/repeat.py) and
+        [Strokes](plover_clippy_3/distillations/strokes.py)), because
         different sources have different requirements.
 
 ## Source Code
 
-  - You can find the source code [here](plover_clippy_2/sources.py)
+  - You can find the source code [here](plover_clippy_3/sources.py)
 
 # Suggestion Sources
 
@@ -253,13 +253,13 @@ def initPost(obj, clippy):
 1.  windows
     
     ``` bash
-    powershell.exe Get-Content clippy_2.org -Wait -Tail 30 | select-string '\*\*'
+    powershell.exe Get-Content clippy_3.org -Wait -Tail 30 | select-string '\*\*'
     ```
 
 2.  Linux
     
     ``` bash
-    tail -f clippy_2.org | grep -F '**'
+    tail -f clippy_3.org | grep -F '**'
     ```
 
 ## Highlighting
@@ -279,7 +279,7 @@ pink
 <!-- end list -->
 
 ``` bash
-tail -f ---disable-inotify ~/.config/plover/clippy_2.org | sed -E 's/</\x1b[1;35m&\x1b[0m/g;'
+tail -f ---disable-inotify ~/.config/plover/clippy_3.org | sed -E 's/</\x1b[1;35m&\x1b[0m/g;'
 ```
 
 # Developers
@@ -316,7 +316,7 @@ git clone link/to/gitHub
 <!-- end list -->
 
 ``` bash
-cd plover_clippy_2
+cd plover_clippy_3
 plover -s plover_plugins install -e .
 ```
 
