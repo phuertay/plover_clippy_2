@@ -1,6 +1,6 @@
 from plover.formatting import RetroFormatter
 from ..algos import tails
-from ..dictionary_source import dictionaries_for_phrase
+from ..dictionary_source import dictionaries_for_outlines
 
 
 class Retro:
@@ -44,8 +44,8 @@ class Retro:
                 yield {"english": english,
                        "stroked": stroked,
                        "suggestions": suggestions,
-                       "dictionary": dictionaries_for_phrase(
-                           clippy.engine, phrase)}
+                       "dictionary": dictionaries_for_outlines(
+                           clippy.engine, suggestions)}
 
     def generator(self, obj, clippy):
         last_num_translations = clippy.state.last_num_translations
