@@ -1,28 +1,35 @@
 #+OPTIONS: ^:nil
-* Plover_clippy_2
+* Plover_clippy_3
 ** Installation
 *** simple
-- To install this plugin, right click the plover icon. go to tools -> plugins manager, find `plover-clippy-2`, and click "install/update".
-- When it finishes installing, restart Plover, go to configure -> plugins, and check the box next to `plover_clippy_2` to activate the plugin
+- To install this plugin, right click the plover icon. go to tools -> plugins manager, find `plover-clippy-3`, and click "install/update".
+- When it finishes installing, restart Plover, go to configure -> plugins, and check the box next to `plover_clippy_3` to activate the plugin
+** Updating
+- The Install/Update button does not pull new commits for a plugin installed from Git. The Git repo button runs =pip install= without =--upgrade=, so entering the same link again leaves the installed copy in place.
+- To update from inside the Plugins Manager:
+  1. Open Tools → Plugins Manager.
+  2. Select =plover-clippy-3= and click Uninstall.
+  3. Click Install from Git repo again and enter https://github.com/phuertay/plover_clippy_3.
+  4. Restart Plover.
 ** File viewing
 - Now that you have installed this plugin it's time to use it!
-- By default the output is written into clippy_2.org in your config files
+- By default the output is written into clippy_3.org in your config files
 	- The same place as where your user.json and main.json is located
 *** Terminal
 - here are some live commands for different platforms
 **** Windows 
 - press start, type 'powershell' enter, then copy and paste the following:
 #+BEGIN_SRC bash
-Get-Content -path "$($env:LOCALAPPDATA)\plover\plover\clippy_2.org" -Wait -Tail 30
+Get-Content -path "$($env:LOCALAPPDATA)\plover\plover\clippy_3.org" -Wait -Tail 30
 #+END_SRC
 **** Linux
 #+BEGIN_SRC bash
-tail -f clippy_2.org
+tail -f clippy_3.org
 #+END_SRC
 **** WSL
 Note that on WSL, the flag `---disable-inotify` may be required to make `tail` work
 #+BEGIN_SRC bash
-tail -f ---disable-inotify clippy_2.org
+tail -f ---disable-inotify clippy_3.org
 #+END_SRC
 **** Plover-live-view-nvim (neovim only)
 - This [[https://github.com/Josiah-tan/plover-live-view-nvim][plugin]] is a live viewer which supports:
@@ -35,14 +42,14 @@ tail -f ---disable-inotify clippy_2.org
 ** Advanced
 *** Customization
 - In your config directory create a python file:
-	- clippy_2_cfg.py
+	- clippy_3_cfg.py
 - feel free to write all your customization code here!
 **** Initialization
 - Below are some states that can be set by the user
 	- Note that these are the basic defaults (see [[file:docs.org::*Defaults][extended docs]] for more)
 #+BEGIN_SRC python
 def initPost(obj, clippy):
-	clippy.state.output_file_name = "clippy_2.org"
+	clippy.state.output_file_name = "clippy_3.org"
 	clippy.state.efficiency_symbol = "*"
 	clippy.state.max_pad_efficiency = 5
 	clippy.state.max_pad_english = 15

@@ -1,5 +1,5 @@
 from .palletes import gruvbox
-from plover_clippy_2.algos.color import getStandardAnsi, wrapAnsi
+from plover_clippy_3.algos.color import getStandardAnsi, wrapAnsi
 
 
 class Color:

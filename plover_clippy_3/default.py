@@ -5,7 +5,7 @@ class Defaults:
 
     @staticmethod
     def init(clippy):
-        clippy.state.output_file_name = "clippy_2.org"
+        clippy.state.output_file_name = "clippy_3.org"
         clippy.state.efficiency_symbol = "*"
         clippy.state.max_pad_efficiency = 5
         clippy.state.max_pad_english = 15

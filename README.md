@@ -1,4 +1,4 @@
-# Plover\_clippy\_2
+# Plover\_clippy\_3
 
 ## Installation
 
@@ -6,16 +6,27 @@
 
   - To install this plugin, right click the plover icon. go to tools -\>
     plugins manager, find the little button for "Install from Git repo"
-    on the right side of "Install/Update" and enter `https://github.com/phuertay/plover_clippy_2`,
+    on the right side of "Install/Update" and enter `https://github.com/phuertay/plover_clippy_3`,
     then click "OK".
   - When it finishes installing, restart Plover, go to configure -\>
-    plugins, and check the box next to \`plover\_clippy\_2\` to activate
+    plugins, and check the box next to \`plover\_clippy\_3\` to activate
     the plugin
+
+## Updating
+
+The Install/Update button does not pull new commits for a plugin installed from Git. The Git repo button runs `pip install` without `--upgrade`, so entering the same link again leaves the installed copy in place.
+
+To update from inside the Plugins Manager:
+
+1. Open Tools → Plugins Manager.
+2. Select `plover-clippy-3` and click Uninstall.
+3. Click Install from Git repo again and enter `https://github.com/phuertay/plover_clippy_3`.
+4. Restart Plover.
 
 ## File viewing
 
   - Now that you have installed this plugin it's time to use it\!
-  - By default the output is written into clippy\_2.org in your config
+  - By default the output is written into clippy\_3.org in your config
     files
       - The same place as where your user.json and main.json is located
 
@@ -33,13 +44,13 @@
     <!-- end list -->
     
     ``` bash
-    Get-Content -path "$($env:LOCALAPPDATA)\plover\plover\clippy_2.org" -Wait -Tail 30
+    Get-Content -path "$($env:LOCALAPPDATA)\plover\plover\clippy_3.org" -Wait -Tail 30
     ```
 
 2.  Linux
     
     ``` bash
-    tail -f clippy_2.org
+    tail -f clippy_3.org
     ```
 
 3.  WSL
@@ -48,7 +59,7 @@
     make \`tail\` work
     
     ``` bash
-    tail -f ---disable-inotify clippy_2.org
+    tail -f ---disable-inotify clippy_3.org
     ```
 
 4.  Plover-live-view-nvim (neovim only)
@@ -76,7 +87,7 @@
 ### Customization
 
   - In your config directory create a python file:
-      - clippy\_2\_cfg.py
+      - clippy\_3\_cfg.py
   - feel free to write all your customization code here\!
 
 <!-- end list -->
@@ -91,7 +102,7 @@
     
     ``` python
     def initPost(obj, clippy):
-        clippy.state.output_file_name = "clippy_2.org"
+        clippy.state.output_file_name = "clippy_3.org"
         clippy.state.efficiency_symbol = "*"
         clippy.state.max_pad_efficiency = 5
         clippy.state.max_pad_english = 15

@@ -1,7 +1,7 @@
 build
 dist
-plover_clippy_2.egg-info
+plover_clippy_3.egg-info
 __pycache__
-/plover_clippy_2/debug.txt
-/plover_clippy_2/debug.py
+/plover_clippy_3/debug.txt
+/plover_clippy_3/debug.py
 /it_works.org

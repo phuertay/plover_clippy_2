@@ -5,7 +5,7 @@ from plover.oslayer.config import CONFIG_DIR
 
 class Preprocess:
     def __init__(self):
-        self.fname = os.path.join(CONFIG_DIR, 'clippy_2_cfg.py')
+        self.fname = os.path.join(CONFIG_DIR, 'clippy_3_cfg.py')
         self.mod = {}
 
     def sourceConfig(self):

@@ -4,13 +4,13 @@ import types
 import unittest
 from unittest.mock import patch
 
-from plover_clippy_2.dictionary_source import (
+from plover_clippy_3.dictionary_source import (
     dictionaries_for_outlines,
     dictionaries_for_phrase,
     dictionary_for_translation,
     dictionary_suffix,
 )
-from plover_clippy_2 import install_sqlite
+from plover_clippy_3 import install_sqlite
 
 
 class Translation:

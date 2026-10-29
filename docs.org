@@ -2,14 +2,14 @@
 * Alternative Installation
 - This section those how to install without using the plugin manager
 #+BEGIN_SRC bash
-git clone https://github.com/Josiah-tan/plover_clippy_2 
+git clone https://github.com/phuertay/plover_clippy_3 
 #+END_SRC
 - cd into this repo
 - Then install for use!
 	- Note that "plover" is the executable that you downloaded to make Plover work in the first place
 	- See this [[https://plover.readthedocs.io/en/latest/cli_reference.html][website]] for the different locations depending on which platform you are using (Linux, Windows, etc)
 #+BEGIN_SRC bash
-cd plover_clippy_2
+cd plover_clippy_3
 plover -s plover_plugins install -e .
 #+END_SRC
 - Finally make sure to open plover, then go to configure, plugins and enable this plugin!
@@ -17,7 +17,7 @@ plover -s plover_plugins install -e .
 - below are all the defaults
 #+BEGIN_SRC python
 def initPost(obj, clippy):
-	clippy.state.output_file_name = "clippy_2.org"
+	clippy.state.output_file_name = "clippy_3.org"
 	clippy.state.efficiency_symbol = "*"
 	clippy.state.max_pad_efficiency = 5
 	clippy.state.max_pad_english = 15
@@ -56,7 +56,7 @@ def initPost(obj, clippy):
 - colors: dictionary (key: value)
 	- customizable keys (str): suggestions, stroked, english, efficiency_symbol, source, START, END, date
 	- customizable values, with several options:
-		- color (str): listed in [[file:plover_clippy_2/formatting/color/palletes/gruvbox.py][gruvbox]]
+		- color (str): listed in [[file:plover_clippy_3/formatting/color/palletes/gruvbox.py][gruvbox]]
 		- hex RGB codes (str): of form "#XXXXXX", such that X represents any value from 1 - F
 		- ANSI escape codes, learn to make your own [[https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html][here]]
 		- Function:
@@ -74,7 +74,7 @@ def initPost(obj, clippy):
 	- colors (dict): overwrite colors from clippy.state.colors but only for this source
 ** Writing your own sources
 - Highly recommend checking out [[*Sources][sources]] to see what you can do with it!
-- feel free to check out [[file:plover_clippy_2/formatting/retro.py][Retro]] and [[file:plover_clippy_2/formatting/org.py][org]] for motivation, let us know on the plover discord if you need any help!
+- feel free to check out [[file:plover_clippy_3/formatting/retro.py][Retro]] and [[file:plover_clippy_3/formatting/org.py][org]] for motivation, let us know on the plover discord if you need any help!
 * Sources
 ** Brief Description
 - A library for custom sources
@@ -135,9 +135,9 @@ def startPost(obj, clippy):
 	clippy.distillations.sources.append(
 					[Beep("num"=1)])
 #+END_SRC
-- when writing your own sources, make sure to check back with the source code for reference (in this case [[file:plover_clippy_2/distillations/repeat.py][Repeat]] and [[file:plover_clippy_2/distillations/strokes.py][Strokes]]), because different sources have different requirements.
+- when writing your own sources, make sure to check back with the source code for reference (in this case [[file:plover_clippy_3/distillations/repeat.py][Repeat]] and [[file:plover_clippy_3/distillations/strokes.py][Strokes]]), because different sources have different requirements.
 ** Source Code
-- You can find the source code [[file:plover_clippy_2/sources.py][here]]
+- You can find the source code [[file:plover_clippy_3/sources.py][here]]
 * Suggestion Sources
 - TODO
 * Distillation Sources
@@ -153,11 +153,11 @@ def startPost(obj, clippy):
 - the code below will only show new rows write have two or more strokes saved:
 **** windows
 #+BEGIN_SRC bash
-powershell.exe Get-Content clippy_2.org -Wait -Tail 30 | select-string '\*\*'
+powershell.exe Get-Content clippy_3.org -Wait -Tail 30 | select-string '\*\*'
 #+END_SRC
 **** Linux
 #+BEGIN_SRC bash
-tail -f clippy_2.org | grep -F '**'
+tail -f clippy_3.org | grep -F '**'
 #+END_SRC
 ** Highlighting
 - while there is builtin support for syntax highlighting, some people might be interested in this other option!!!
@@ -166,7 +166,7 @@ tail -f clippy_2.org | grep -F '**'
 **** Linux
 - here we replace `<` with itself but colored pink
 #+BEGIN_SRC bash
-tail -f ---disable-inotify ~/.config/plover/clippy_2.org | sed -E 's/</\x1b[1;35m&\x1b[0m/g;'
+tail -f ---disable-inotify ~/.config/plover/clippy_3.org | sed -E 's/</\x1b[1;35m&\x1b[0m/g;'
 #+END_SRC
 * Developers
 This section is for people who interested in improving this plugin!
@@ -184,7 +184,7 @@ git clone link/to/gitHub
 	- Note that "plover" is the executable that you downloaded to make Plover work in the first place
 	- See this [[https://plover.readthedocs.io/en/latest/cli_reference.html][website]] for the different locations depending on which platform you are using (Linux, Windows, etc)
 #+BEGIN_SRC bash
-cd plover_clippy_2
+cd plover_clippy_3
 plover -s plover_plugins install -e .
 #+END_SRC
 - Edit stuff, test it out and most of all, have fun!
