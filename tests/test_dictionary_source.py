@@ -7,8 +7,10 @@ from unittest.mock import patch
 from plover_clippy_3.dictionary_source import (
     dictionaries_for_outlines,
     dictionaries_for_phrase,
+    dictionary_aligned,
     dictionary_for_translation,
     dictionary_suffix,
+    suggestion_column_width,
 )
 from plover_clippy_3 import install_sqlite
 
@@ -86,6 +88,14 @@ class DictionarySourceTest(unittest.TestCase):
         self.assertEqual(dictionaries_for_phrase(engine, phrase), "user.json, main.json")
         self.assertEqual(dictionary_suffix("user.json, main.json"), " (user.json, main.json)")
         self.assertEqual(dictionary_suffix(""), "")
+
+    def test_dictionary_aligned_under_suggestion_column(self):
+        column = suggestion_column_width(5, 15)
+        self.assertEqual(column, 22)
+        aligned = dictionary_aligned("user.json", column)
+        self.assertTrue(aligned.startswith("\n"))
+        self.assertEqual(aligned, f"\n{' ' * column}(user.json)")
+        self.assertEqual(dictionary_aligned("", column), "")
 
     def test_suggestion_uses_its_own_dictionary(self):
         brief = ("PWEURBLGTSD",)
