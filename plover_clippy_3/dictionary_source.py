@@ -80,3 +80,15 @@ def dictionary_suffix(name):
     if not name:
         return ""
     return f" ({name})"
+
+
+def suggestion_column_width(max_pad_efficiency, max_pad_english):
+    # Visual columns before the optimal stroke in Org output:
+    # efficiency pad, space, english pad, space.
+    return max_pad_efficiency + 1 + max_pad_english + 1
+
+
+def dictionary_aligned(name, column):
+    if not name:
+        return ""
+    return f"\n{' ' * column}({name})"

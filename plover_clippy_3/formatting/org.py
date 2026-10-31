@@ -1,6 +1,9 @@
 from .retro import Retro
 from .color import Color
-from ..dictionary_source import dictionary_suffix
+from ..dictionary_source import (
+    dictionary_aligned,
+    suggestion_column_width,
+)
 
 
 class Org(Color):
@@ -35,7 +38,11 @@ class Org(Color):
         self.efficiency_symbol = self.getEfficiencySymbol(
                 clippy, phrase["stroked"], phrase["suggestions"])
         self.source = f'# {phrase["source"]}'
-        self.dictionary = dictionary_suffix(phrase.get("dictionary"))
+        column = suggestion_column_width(
+                clippy.state.max_pad_efficiency,
+                clippy.state.max_pad_english)
+        self.dictionary = dictionary_aligned(
+                phrase.get("dictionary"), column)
 
     def format(self, obj, clippy):
         self.mode(obj, clippy)
