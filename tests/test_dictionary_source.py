@@ -94,7 +94,7 @@ class DictionarySourceTest(unittest.TestCase):
         self.assertEqual(column, 22)
         aligned = dictionary_aligned("user.json", column)
         self.assertTrue(aligned.startswith("\n"))
-        self.assertEqual(aligned, f"\n{' ' * column}(user.json)")
+        self.assertEqual(aligned, f"\n{' ' * column}user.json")
         self.assertEqual(dictionary_aligned("", column), "")
 
     def test_suggestion_uses_its_own_dictionary(self):

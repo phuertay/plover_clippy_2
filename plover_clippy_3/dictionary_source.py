@@ -89,4 +89,4 @@ def suggestion_column_width(max_pad_efficiency, max_pad_english):
 def dictionary_aligned(name, column):
     if not name:
         return ""
-    return f"\n{' ' * column}({name})"
+    return f"\n{' ' * column}{name}"
